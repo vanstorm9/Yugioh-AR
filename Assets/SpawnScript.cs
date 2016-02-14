@@ -42,7 +42,9 @@ public class SpawnScript : MonoBehaviour {
             
             tempGameObject = Instantiate(this.SpawnObject, this.SpawnPoint.transform.position, this.SpawnPoint.transform.rotation) as GameObject;
             tempGameObject.transform.parent = this.transform;
-            tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
+
+        // Only for Blue Eyes (future work is to have an external script to call from that will store values)
+        tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
         //counter++;
         //}
         Debug.Log("Pos: " + SpawnPoint.transform.position);

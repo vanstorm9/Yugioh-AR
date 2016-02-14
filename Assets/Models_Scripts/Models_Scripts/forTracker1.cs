@@ -40,7 +40,7 @@ public class forTracker1 : MonoBehaviour, ITrackableEventHandler {
 		    newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
 		{
 			// Play audio when target is found
-		    //Debug.Log("Play Sound");
+	
 			mShowGUIButton  = true;
 			//audio.Play();
 		}
