@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{FF1A0605-EE94-61ED-FFC6-6C34349136AB}</ProjectGuid>
+	<ProjectGuid>{2CE94732-40EF-3C61-CE65-7D65E1129435}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -80,10 +80,10 @@
  <HintPath>C:/Program Files (x86)/Unity32/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Qualcomm.Vuforia.UnityExtensions.Editor">
- <HintPath>C:/Users/Anthony Lowhur/Documents/Programming/Unity/git-projects/ARtest/Yu-gi-oh/Assets/Editor/QCAR/Scripts/Qualcomm.Vuforia.UnityExtensions.Editor.dll</HintPath>
+ <HintPath>C:/Users/Anthony Lowhur/Documents/Programming/Unity/git-projects/Yugioh-AR/Assets/Editor/QCAR/Scripts/Qualcomm.Vuforia.UnityExtensions.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Qualcomm.Vuforia.UnityExtensions">
- <HintPath>C:/Users/Anthony Lowhur/Documents/Programming/Unity/git-projects/ARtest/Yu-gi-oh/Assets/Qualcomm Augmented Reality/Scripts/Internal/Qualcomm.Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>C:/Users/Anthony Lowhur/Documents/Programming/Unity/git-projects/Yugioh-AR/Assets/Qualcomm Augmented Reality/Scripts/Internal/Qualcomm.Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity32/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
