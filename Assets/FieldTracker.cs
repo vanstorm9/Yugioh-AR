@@ -1,97 +1,118 @@
-﻿using UnityEngine;
-using System.Collections;
-using Vuforia;
+﻿/*==============================================================================
+Copyright (c) 2010-2014 Qualcomm Connected Experiences, Inc.
+All Rights Reserved.
+Confidential and Proprietary - Qualcomm Connected Experiences, Inc.
+==============================================================================*/
 
-public class FieldTracker : MonoBehaviour, ITrackableEventHandler
+using UnityEngine;
+
+namespace Vuforia
 {
-    private TrackableBehaviour mTrackableBehaviour; // trackers
-                                                    //float PlayerLifePoints = 4000f;
-                                                    //public GUIStyle MyGUIstyle;
-    private bool mShowGUIButton = false; // GUI 
-    private Rect attackButton2 = new Rect(970, 30, 120, 40); // GUI
-    private Rect defenseButton2 = new Rect(970, 80, 120, 40); // GUI
+    /// <summary>
+    /// A custom handler that implements the ITrackableEventHandler interface.
+    /// </summary>
 
-    private GameObject DE, ME, Spark, Blast, Cyclone; //effects, monsters
+    public class FieldTracker : MonoBehaviour, ITrackableEventHandler
 
-    void Start()
     {
-        Spark = transform.FindChild("Spark").gameObject; // effects
-        Spark.SetActive(false);
+        #region PRIVATE_MEMBER_VARIABLES
 
-        Blast = transform.FindChild("Blast").gameObject; // effects
-        Blast.SetActive(false);
-        // effects
-        Cyclone = transform.FindChild("Cyclone").gameObject; // effects
-        Cyclone.SetActive(false);
+        private TrackableBehaviour mTrackableBehaviour;
 
-        mTrackableBehaviour = GetComponent<TrackableBehaviour>();
-        if (mTrackableBehaviour)
-        {
-            mTrackableBehaviour.RegisterTrackableEventHandler(this);
-        }
-    }
+        #endregion // PRIVATE_MEMBER_VARIABLES
 
-    public void OnTrackableStateChanged(
-        TrackableBehaviour.Status previousStatus,
-        TrackableBehaviour.Status newStatus)
-    {
-        if (newStatus == TrackableBehaviour.Status.DETECTED ||
-            newStatus == TrackableBehaviour.Status.TRACKED ||
-            newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
-        {
-            // Play audio when target is found
-            //Debug.Log("Play Sound");
-            mShowGUIButton = true;
-            //defenseButton = true;
-            //audio.Play();
-        }
-        else
-        {
-            // Stop audio when target is lost
-            //	Debug.Log("Stop Sound");
-            mShowGUIButton = false;
-            //defenseButton = false;
-            //audio.Stop();
-        }
-    }
 
-    void OnGUI()
-    {
-        if (mShowGUIButton)
+        #region UNTIY_MONOBEHAVIOUR_METHODS
+
+        void Start()
         {
-            // draw the GUI button
-            if (GUI.Button(attackButton2, "ATK/300"))
+
+            mTrackableBehaviour = GetComponent<TrackableBehaviour>();
+            if (mTrackableBehaviour)
             {
-                Debug.Log("Attack!");
-                Cyclone.SetActive(false);
-                Spark.SetActive(true);
-                Blast.SetActive(true);
-                StartCoroutine(StartWait());
-
-
-                // do something on button click 
-            }
-            if (GUI.Button(defenseButton2, "DEF/200"))
-            {
-                Debug.Log("Defense!");
-                Cyclone.SetActive(true);
-                //Spark.SetActive(false);
+                mTrackableBehaviour.RegisterTrackableEventHandler(this);
             }
         }
-    }
 
-    IEnumerator StartWait()
-    {
-        yield return StartCoroutine(Wait(1.50F));
-        Spark.SetActive(false);
-        Cyclone.SetActive(false);
-        Blast.SetActive(false);
-    }
+        #endregion // UNTIY_MONOBEHAVIOUR_METHODS
 
 
-    IEnumerator Wait(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
+
+        #region PUBLIC_METHODS
+
+        /// <summary>
+        /// Implementation of the ITrackableEventHandler function called when the
+        /// tracking state changes.
+        /// </summary>
+        public void OnTrackableStateChanged(
+                                        TrackableBehaviour.Status previousStatus,
+                                        TrackableBehaviour.Status newStatus)
+        {
+            if (newStatus == TrackableBehaviour.Status.DETECTED ||
+                newStatus == TrackableBehaviour.Status.TRACKED ||
+                newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
+            {
+                OnTrackingFound();
+            }
+            else
+            {
+                OnTrackingLost();
+            }
+        }
+
+        #endregion // PUBLIC_METHODS
+
+
+
+        #region PRIVATE_METHODS
+
+
+        private void OnTrackingFound()
+        {
+            Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
+            Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+
+            // Enable rendering:
+            foreach (Renderer component in rendererComponents)
+            {
+                // A print statement here prints out multiple times as long as card is in view
+
+                //Debug.Log(mTrackableBehaviour.TrackableName + " is on the field");
+                component.enabled = true;
+            }
+
+            // Enable colliders:
+            foreach (Collider component in colliderComponents)
+            {
+                component.enabled = true;
+            }
+
+
+
+            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
+        }
+
+
+        private void OnTrackingLost()
+        {
+            Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
+            Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+
+            // Disable rendering:
+            foreach (Renderer component in rendererComponents)
+            {
+                component.enabled = false;
+            }
+
+            // Disable colliders:
+            foreach (Collider component in colliderComponents)
+            {
+                component.enabled = false;
+            }
+
+            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+        }
+
+        #endregion // PRIVATE_METHODS
     }
 }
-

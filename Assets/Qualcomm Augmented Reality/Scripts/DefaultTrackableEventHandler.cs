@@ -11,21 +11,28 @@ namespace Vuforia
     /// <summary>
     /// A custom handler that implements the ITrackableEventHandler interface.
     /// </summary>
+    
+
     public class DefaultTrackableEventHandler : MonoBehaviour,
                                                 ITrackableEventHandler
     {
         #region PRIVATE_MEMBER_VARIABLES
  
         private TrackableBehaviour mTrackableBehaviour;
-    
+
         #endregion // PRIVATE_MEMBER_VARIABLES
-
-
+        private GameObject field = GameObject.Find("FieldTarget");
+        public GameObject main_model;
+        private GameObject master = GameObject.Find("MasterObject");
+        private int counter = 0;
+        public int mode = 0;
+        public SpawnScript summon;
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
-    
+
         void Start()
         {
+            field = GameObject.Find("FieldTarget");
             mTrackableBehaviour = GetComponent<TrackableBehaviour>();
             if (mTrackableBehaviour)
             {
@@ -72,20 +79,48 @@ namespace Vuforia
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
             // Enable rendering:
-            foreach (Renderer component in rendererComponents)
+        
+                foreach (Renderer component in rendererComponents)
+                {
+                    // A print statement here prints out multiple times as long as card is in view
+
+                    //Debug.Log(mTrackableBehaviour.TrackableName + " is on the field");
+         
+                    component.enabled = true;
+                }
+
+                // Enable colliders:
+                foreach (Collider component in colliderComponents)
+                {
+                    component.enabled = true;
+                }
+            
+
+      
+            
+            summon = field.GetComponent("SpawnScript") as SpawnScript;
+
+            if (counter == 0 && mode == 0)
             {
-                // A print statement here prints out multiple times as long as card is in view
+                // If statementt to summon the model only once
+                summon.summonToField(main_model);
+                counter++;
+                foreach (Renderer component in rendererComponents)
+                {
+                    // A print statement here prints out multiple times as long as card is in view
 
-                //Debug.Log(mTrackableBehaviour.TrackableName + " is on the field");
-                component.enabled = true;
+                    //Debug.Log(mTrackableBehaviour.TrackableName + " is on the field");
+
+                    component.enabled = false;
+                }
+
+                // Enable colliders:
+                foreach (Collider component in colliderComponents)
+                {
+                    component.enabled = false;
+                }
+
             }
-
-            // Enable colliders:
-            foreach (Collider component in colliderComponents)
-            {
-                component.enabled = true;
-            }
-
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
 

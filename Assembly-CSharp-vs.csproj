@@ -52,6 +52,7 @@
      <Compile Include="Assets\Hit_detection.cs" />
      <Compile Include="Assets\Hit_detection_BEWD.cs" />
      <Compile Include="Assets\Hit_detection_Kuribo.cs" />
+     <Compile Include="Assets\MasterControl.cs" />
      <Compile Include="Assets\Models_Scripts\Models_Scripts\forTracker1.cs" />
      <Compile Include="Assets\Models_Scripts\Models_Scripts\forTracker2.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\BackgroundPlaneBehaviour.cs" />
