@@ -9,18 +9,20 @@ public class SpawnScript : MonoBehaviour {
     private MonsterTraits monTraits;
     private battleManage batManage;
 
-    private GameObject Explode;
 
     //int counter = 0;
-
-  
-
+    /*
+    void Start()
+    {
+        GameObject explosion = GameObject.Find("Explosion");
+        explosion.SetActive(false);
+    }
+    */
     // Update is called once per frame
     public void summonToField(GameObject ObjectToCopy) {
         // if (counter == 0)
         // {
-        Explode = GameObject.Find("Explode");
-      
+
 
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
