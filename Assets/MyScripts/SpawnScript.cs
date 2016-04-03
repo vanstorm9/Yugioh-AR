@@ -6,12 +6,17 @@ public class SpawnScript : MonoBehaviour {
     public GameObject SpawnObject;
     public GameObject RefObject;
     private GameObject SpawnPoint;
+    private MonsterTraits monTraits;
+   
+
     //int counter = 0;
 
 	// Update is called once per frame
 	public void summonToField(GameObject ObjectToCopy) {
         // if (counter == 0)
         // {
+        
+
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
@@ -46,7 +51,14 @@ public class SpawnScript : MonoBehaviour {
         tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
         //counter++;
         //}
-        Debug.Log("Pos: " + SpawnPoint.transform.position);
+
+        /*
+        MonsterTraits monTraits = tempGameObject.GetComponent("MonsterTraits") as MonsterTraits;
+        Debug.Log("ATK: " + monTraits.atk);
+
+        Debug.Log("GO: " + tempGameObject);
+        Debug.Log("GO Parent: " + tempGameObject.transform.parent.name);
+        */
         //Debug.Log("Ref_pos:" + RefObject.transform.position);
     }
 }

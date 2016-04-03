@@ -2,19 +2,16 @@
 using System.Collections;
 
 public class MonsterTraits : MonoBehaviour {
-    public class MonsTraits
+    public int card_ID;
+    public string name;
+    public string code_name;
+    public int type;
+    public int atk;
+    public int def;
+    public int cslot;
+
+    void Start()
     {
-        public int cslot;
-        public string name;
-        public int atk;
-        public int def;
-
-        public void editMonsTraits(int cslotf, int atkf, int deff)
-        {
-            cslot = cslotf;
-            atk = atkf;
-            def = deff;
-        }
+        cslot = -1;        
     }
-
 }
