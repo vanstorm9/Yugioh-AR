@@ -48,13 +48,16 @@
   <ItemGroup>
      <Compile Include="Assets\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Elementals\Scripts\TestParticles.cs" />
-     <Compile Include="Assets\FieldTracker.cs" />
-     <Compile Include="Assets\Hit_detection.cs" />
-     <Compile Include="Assets\Hit_detection_BEWD.cs" />
-     <Compile Include="Assets\Hit_detection_Kuribo.cs" />
-     <Compile Include="Assets\MasterControl.cs" />
      <Compile Include="Assets\Models_Scripts\Models_Scripts\forTracker1.cs" />
      <Compile Include="Assets\Models_Scripts\Models_Scripts\forTracker2.cs" />
+     <Compile Include="Assets\MyScripts\FieldTracker.cs" />
+     <Compile Include="Assets\MyScripts\Hit_detection.cs" />
+     <Compile Include="Assets\MyScripts\Hit_detection_BEWD.cs" />
+     <Compile Include="Assets\MyScripts\Hit_detection_Kuribo.cs" />
+     <Compile Include="Assets\MyScripts\MasterControl.cs" />
+     <Compile Include="Assets\MyScripts\MonsterTraits.cs" />
+     <Compile Include="Assets\MyScripts\SpawnScript.cs" />
+     <Compile Include="Assets\MyScripts\battleManage.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CloudRecoBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CylinderTargetBehaviour.cs" />
@@ -91,11 +94,11 @@
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WireframeBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WireframeTrackableEventHandler.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\WordBehaviour.cs" />
-     <Compile Include="Assets\SpawnScript.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\link.xml" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\VertexLitWithZ.shader" />
      <None Include="Assets\StreamingAssets\QCAR\ButtonTest.xml" />
+     <None Include="Assets\StreamingAssets\QCAR\Duel_Temp_Cards 2.xml" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\RenderVideoBackground.shader" />
      <None Include="Assets\license_3rdpartynotice.txt" />
      <None Include="Assets\Qualcomm Augmented Reality\Shaders\VideoBackground.shader" />
