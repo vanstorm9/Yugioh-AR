@@ -20,14 +20,15 @@ public class SpawnScript : MonoBehaviour {
         // if (counter == 0)
         // {
         Explode = GameObject.Find("Explode");
-        Explode.SetActive(false);
+      
 
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
+
         // Enable rendering:
-       
-            foreach (Renderer component in rendererComponents)
+
+        foreach (Renderer component in rendererComponents)
             {
                 // A print statement here prints out multiple times as long as card is in view
 
@@ -36,8 +37,9 @@ public class SpawnScript : MonoBehaviour {
                 component.enabled = true;
             }
 
-            // Enable colliders:
-            foreach (Collider component in colliderComponents)
+
+        // Enable colliders:
+        foreach (Collider component in colliderComponents)
             {
                 component.enabled = true;
             }

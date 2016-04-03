@@ -3,13 +3,18 @@ using System.Collections;
 
 public class battleManage : MonoBehaviour {
     private GameObject Explode;
+    //private bool mShowGUIButton;
+    //private Rect attackButton = new Rect(30, 30, 120, 40); // GUI
+
     // Use this for initialization
     public void battlePhase(GameObject attacker, GameObject defender)
     {
-        Explode = GameObject.Find("Explode");
-        
-        // Entering battle phase (monster is preparing an attack)
+        //mShowGUIButton = true;
 
+        // Entering battle phase (monster is preparing an attack)
+        Explode = GameObject.Find("Explode");
+        GameObject m_CurrentParticle = (GameObject)Instantiate(Explode);
+        m_CurrentParticle.SetActive(true);
 
         MonsterTraits attacker_traits = attacker.GetComponent("MonsterTraits") as MonsterTraits;
         MonsterTraits defender_traits = defender.GetComponent("MonsterTraits") as MonsterTraits;
@@ -25,8 +30,10 @@ public class battleManage : MonoBehaviour {
             // Explosions
             int explosion_slot = defender_traits.cslot;
             Explode.SetActive(true);
+            
             Debug.Log("Explosion has occured");
-            Explode.SetActive(false);
+            Destroy(defender);
+            
 
 
 
@@ -48,6 +55,35 @@ public class battleManage : MonoBehaviour {
         
         
     }
-	
+
+
+
+        /*
+    void OnGUI()
+        {
+            //	GUI.Label(new Rect (Screen.width - (Screen.width * 0.9f) - 50.0f, Screen.height - Screen.height, 100.0f, 30.0f), "Player 1 Score: " + Player1LifePoints, MyGUIstyle);
+            //	GUI.Label(new Rect (Screen.width - (Screen.width * 0.3f) - 50.0f, Screen.height - Screen.height, 100.0f, 30.0f), "Player 1 Score: " + Player2LifePoints, MyGUIstyle);
+
+            if (mShowGUIButton)
+            {
+                // draw the GUI button
+                if (GUI.Button(attackButton, "ATK/3000"))
+                {
+                    Debug.Log("Attack!");
+                    Explode = GameObject.Find("Explode");
+                    Explode.SetActive(true);    
+                //StartCoroutine(StartWait());
+                // do something on button click 
+            }
+             
+            }
+        }
+
+
+    void Update()
+    {
+
+    }
+    */
 
 }

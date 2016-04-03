@@ -240,7 +240,7 @@ public class TestParticles : MonoBehaviour {
 			}
 	
 			// Create new particle
-			m_CurrentParticle = (GameObject) Instantiate(m_CurrentElementList[m_CurrentParticleIndex]);
+			//m_CurrentParticle = (GameObject) Instantiate(m_CurrentElementList[m_CurrentParticleIndex]);
 		}
 		
 		// Show Help window
