@@ -2,12 +2,15 @@
 using System.Collections;
 
 public class battleManage : MonoBehaviour {
-
+    private GameObject Explode;
     // Use this for initialization
     public void battlePhase(GameObject attacker, GameObject defender)
     {
-        Debug.Log("Entering battle phase");
+        Explode = GameObject.Find("Explode");
         
+        // Entering battle phase (monster is preparing an attack)
+
+
         MonsterTraits attacker_traits = attacker.GetComponent("MonsterTraits") as MonsterTraits;
         MonsterTraits defender_traits = defender.GetComponent("MonsterTraits") as MonsterTraits;
         Debug.Log(attacker_traits.real_name + " is now attacking " + defender_traits.real_name);
@@ -18,6 +21,15 @@ public class battleManage : MonoBehaviour {
             // If attacker is stronger than defender
             Debug.Log(attacker_traits.real_name + " destroyed " + defender_traits.real_name + "!");
             Debug.Log("Opponent lost " + (attacker_traits.atk - defender_traits.atk) + "LP!");
+
+            // Explosions
+            int explosion_slot = defender_traits.cslot;
+            Explode.SetActive(true);
+            Debug.Log("Explosion has occured");
+            Explode.SetActive(false);
+
+
+
         }
         else if (attacker_traits.atk == defender_traits.atk)
         {
@@ -29,7 +41,11 @@ public class battleManage : MonoBehaviour {
             // If attacker is weaker than defender
             Debug.Log(attacker_traits.real_name + " was destroyed by " + defender_traits.real_name + "!");
             Debug.Log("You lost " + (defender_traits.atk - attacker_traits.atk) + "LP!");
+
+            int explosion_slot = attacker_traits.cslot;
         }
+        
+        
         
     }
 	

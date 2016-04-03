@@ -9,6 +9,7 @@ public class SpawnScript : MonoBehaviour {
     private MonsterTraits monTraits;
     private battleManage batManage;
 
+    private GameObject Explode;
 
     //int counter = 0;
 
@@ -18,7 +19,8 @@ public class SpawnScript : MonoBehaviour {
     public void summonToField(GameObject ObjectToCopy) {
         // if (counter == 0)
         // {
-        
+        Explode = GameObject.Find("Explode");
+        Explode.SetActive(false);
 
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
@@ -41,13 +43,13 @@ public class SpawnScript : MonoBehaviour {
             }
         
         this.SpawnObject = ObjectToCopy;
-            SpawnPoint = GameObject.Find("Spawn");   // add a function that allocates spawn location
-
-            GameObject tempGameObject;
+        SpawnPoint = GameObject.Find("Spawn");   // add a function that allocates spawn location
+        int spawn_state = 1;
+        GameObject tempGameObject;
 
             
-            tempGameObject = Instantiate(this.SpawnObject, this.SpawnPoint.transform.position, this.SpawnPoint.transform.rotation) as GameObject;
-            tempGameObject.transform.parent = this.transform;
+        tempGameObject = Instantiate(this.SpawnObject, this.SpawnPoint.transform.position, this.SpawnPoint.transform.rotation) as GameObject;
+        tempGameObject.transform.parent = this.transform;
 
         // Only for Blue Eyes (future work is to have an external script to call from that will store values)
         tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
@@ -59,6 +61,10 @@ public class SpawnScript : MonoBehaviour {
         //Debug.Log("BWED_real: ", ObjectToCopy);
 
         batManage = GetComponent("battleManage") as battleManage;
+
+        MonsterTraits spawn_trait = tempGameObject.GetComponent("MonsterTraits") as MonsterTraits;
+        spawn_trait.cslot = spawn_state;
+
         batManage.battlePhase(tempGameObject, Kuribo_temp);
 
 
