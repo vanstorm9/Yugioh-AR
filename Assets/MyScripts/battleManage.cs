@@ -2,21 +2,30 @@
 using System.Collections;
 
 public class battleManage : MonoBehaviour {
-    private GameObject Explosion;
+    GameObject Explosion;
+    //GameObject ExplodeSwitch;
     //private bool mShowGUIButton;
     //private Rect attackButton = new Rect(30, 30, 120, 40); // GUI
 
-  
+
+    void Start()
+    {
+        Explosion = GameObject.Find("Explosion");
+        Explosion.SetActive(false);
+    }
+
+   
+
     // Use this for initialization
     public void battlePhase(GameObject attacker, GameObject defender)
     {
         //mShowGUIButton = true;
-        Explosion = GameObject.Find("Explosion");
-        
+        //Explosion = GameObject.Find("Explosion");
         // Entering battle phase (monster is preparing an attack)
         Explosion.SetActive(true);
-       
-       // Explode.PlayAnimation();
+
+        
+        //Explosion.PlayAnimation(Explosion);
 
         MonsterTraits attacker_traits = attacker.GetComponent("MonsterTraits") as MonsterTraits;
         MonsterTraits defender_traits = defender.GetComponent("MonsterTraits") as MonsterTraits;
@@ -31,8 +40,8 @@ public class battleManage : MonoBehaviour {
 
             // Explosions
             int explosion_slot = defender_traits.cslot;
-            
-            
+
+
             Debug.Log("Explosion has occured");
             Destroy(defender);
             

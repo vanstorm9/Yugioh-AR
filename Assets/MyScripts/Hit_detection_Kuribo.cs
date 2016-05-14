@@ -8,14 +8,14 @@ public class Hit_detection_Kuribo : MonoBehaviour {
     void Start()
     {
         Spark = transform.FindChild("Spark").gameObject;
-        Blast = transform.FindChild("Blast").gameObject;
+        //Blast = transform.FindChild("Blast").gameObject;
     }
 
     void OnCollisionEnter(Collision col)
     {
         //Debug.Log("Entered my domain!");
         Spark.SetActive(true);
-        Blast.SetActive(true);
+        //Blast.SetActive(true);
         timer = 0;
     }
 
@@ -28,7 +28,7 @@ public class Hit_detection_Kuribo : MonoBehaviour {
     void OnCollisionExit(Collision col)
     {
         Spark.SetActive(false);
-        Blast.SetActive(false);
+        //Blast.SetActive(false);
         /*
         if (timer % 20 == 0)
         {

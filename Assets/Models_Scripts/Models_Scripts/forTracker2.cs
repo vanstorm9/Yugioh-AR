@@ -19,8 +19,8 @@ public class forTracker2 : MonoBehaviour, ITrackableEventHandler {
 		Spark = transform.FindChild("Spark").gameObject; // effects
 		Spark.SetActive(false); 	
 
-		Blast = transform.FindChild("Blast").gameObject; // effects
-		Blast.SetActive(false); 
+		//Blast = transform.FindChild("Blast").gameObject; // effects
+		//Blast.SetActive(false); 
 		// effects
 		Cyclone = transform.FindChild("Cyclone").gameObject; // effects
 		Cyclone.SetActive(false); 
