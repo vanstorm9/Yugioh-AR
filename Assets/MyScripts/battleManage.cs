@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class battleManage : MonoBehaviour {
-    GameObject Explosion;
+    private GameObject Explosion;
     //GameObject ExplodeSwitch;
     //private bool mShowGUIButton;
     //private Rect attackButton = new Rect(30, 30, 120, 40); // GUI
@@ -14,18 +14,21 @@ public class battleManage : MonoBehaviour {
         Explosion.SetActive(false);
     }
 
-   
+
+    private void attackAnimations()
+    {
+        // To list series of attack animations
+        Explosion.SetActive(true);
+    }
 
     // Use this for initialization
     public void battlePhase(GameObject attacker, GameObject defender)
     {
         //mShowGUIButton = true;
-        //Explosion = GameObject.Find("Explosion");
         // Entering battle phase (monster is preparing an attack)
-        Explosion.SetActive(true);
+        attackAnimations();
 
-        
-        //Explosion.PlayAnimation(Explosion);
+
 
         MonsterTraits attacker_traits = attacker.GetComponent("MonsterTraits") as MonsterTraits;
         MonsterTraits defender_traits = defender.GetComponent("MonsterTraits") as MonsterTraits;
