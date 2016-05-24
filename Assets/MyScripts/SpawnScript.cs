@@ -55,6 +55,9 @@ public class SpawnScript : MonoBehaviour {
         tempGameObject = Instantiate(this.SpawnObject, this.SpawnPoint.transform.position, this.SpawnPoint.transform.rotation) as GameObject;
         tempGameObject.transform.parent = this.transform;
 
+
+        // ---------------------------- Temporary Code (Must Replace in Future Development -----------------------------
+
         // Only for Blue Eyes (future work is to have an external script to call from that will store values)
         tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
 
@@ -70,7 +73,7 @@ public class SpawnScript : MonoBehaviour {
         spawn_trait.cslot = spawn_state;
 
         batManage.battlePhase(tempGameObject, Kuribo_temp);
-
+        // ----------------------------------------------------------------------------------------------
 
         
 

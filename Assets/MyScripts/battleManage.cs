@@ -15,10 +15,8 @@ public class battleManage : MonoBehaviour {
     }
 
     // Allows us to time our explosion
-    IEnumerator PlayExplosionIE(int delay_int)
+    IEnumerator SuccessfulAttackIE(int delay_int)
     {
-        //print(Time.time);
-
         attacker_attack = attacker.transform.FindChild("Attack").gameObject;
         // Delay at n seconds
         yield return new WaitForSeconds(delay_int);
@@ -26,11 +24,15 @@ public class battleManage : MonoBehaviour {
         // Animation commands / settings
         attacker_attack.SetActive(false);
         Explosion.SetActive(true);
+        Destroy(defender);
     }
 
-    private void attackAnimations()
+    private void attackAnimations(string result)
     {
-        StartCoroutine(PlayExplosionIE(1));
+        if(result == "Attack_Success")
+        { 
+            StartCoroutine(SuccessfulAttackIE(1));
+        }
         
     }
 
@@ -48,11 +50,14 @@ public class battleManage : MonoBehaviour {
         MonsterTraits defender_traits = defender.GetComponent("MonsterTraits") as MonsterTraits;
         Debug.Log(attacker_traits.real_name + " is now attacking " + defender_traits.real_name);
 
-        attackAnimations(); // Commence attack animations
+        
 
         // Assuming the defender is in attack mode
         if (attacker_traits.atk > defender_traits.atk)
         {
+
+            attackAnimations("Attack_Success"); // Commence attack animations
+
             // If attacker is stronger than defender
             Debug.Log(attacker_traits.real_name + " destroyed " + defender_traits.real_name + "!");
             Debug.Log("Opponent lost " + (attacker_traits.atk - defender_traits.atk) + "LP!");
@@ -60,9 +65,7 @@ public class battleManage : MonoBehaviour {
             // Explosions
             int explosion_slot = defender_traits.cslot;
 
-
-            Debug.Log("Explosion has occured");
-            Destroy(defender);
+            
             
 
 
