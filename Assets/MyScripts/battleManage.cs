@@ -3,9 +3,9 @@ using System.Collections;
 
 public class battleManage : MonoBehaviour {
     private GameObject Explosion;
-    //GameObject ExplodeSwitch;
-    //private bool mShowGUIButton;
-    //private Rect attackButton = new Rect(30, 30, 120, 40); // GUI
+    private GameObject attacker;
+    private GameObject defender;
+    private GameObject attacker_attack;
 
 
     void Start()
@@ -14,25 +14,41 @@ public class battleManage : MonoBehaviour {
         Explosion.SetActive(false);
     }
 
-
-    private void attackAnimations()
+    // Allows us to time our explosion
+    IEnumerator PlayExplosionIE(int delay_int)
     {
-        // To list series of attack animations
+        //print(Time.time);
+
+        attacker_attack = attacker.transform.FindChild("Attack").gameObject;
+        // Delay at n seconds
+        yield return new WaitForSeconds(delay_int);
+
+        // Animation commands / settings
+        attacker_attack.SetActive(false);
         Explosion.SetActive(true);
     }
 
-    // Use this for initialization
-    public void battlePhase(GameObject attacker, GameObject defender)
+    private void attackAnimations()
     {
+        StartCoroutine(PlayExplosionIE(1));
+        
+    }
+
+    // Use this for initialization
+    public void battlePhase(GameObject attacker_i, GameObject defender_i)
+    {
+        // Turning our input GameObjects into our global variables
+        attacker = attacker_i;
+        defender = defender_i;
+
         //mShowGUIButton = true;
         // Entering battle phase (monster is preparing an attack)
-        attackAnimations();
-
-
 
         MonsterTraits attacker_traits = attacker.GetComponent("MonsterTraits") as MonsterTraits;
         MonsterTraits defender_traits = defender.GetComponent("MonsterTraits") as MonsterTraits;
         Debug.Log(attacker_traits.real_name + " is now attacking " + defender_traits.real_name);
+
+        attackAnimations(); // Commence attack animations
 
         // Assuming the defender is in attack mode
         if (attacker_traits.atk > defender_traits.atk)
