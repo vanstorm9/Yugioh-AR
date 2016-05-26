@@ -30,15 +30,6 @@ namespace Vuforia
         public MasterControl master_cont;
 
 
-
-        private bool mShowGUIButton = false; // GUI 
-        private Rect attackButton = new Rect(30, 30, 120, 40); // GUI
-        private Rect defenseButton = new Rect(30, 80, 120, 40); // GUI
-
-        private GameObject Spark, Cyclone; //effects, monsters
-
-
-
         #region UNTIY_MONOBEHAVIOUR_METHODS
 
         void Start()
@@ -94,8 +85,7 @@ namespace Vuforia
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
-            // Enable rendering:
-            mShowGUIButton = true;
+
             foreach (Renderer component in rendererComponents)
                 {
                     // A print statement here prints out multiple times as long as card is in view
@@ -164,32 +154,7 @@ namespace Vuforia
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
         }
 
-
-        void OnGUI()
-        {
-            //	GUI.Label(new Rect (Screen.width - (Screen.width * 0.9f) - 50.0f, Screen.height - Screen.height, 100.0f, 30.0f), "Player 1 Score: " + Player1LifePoints, MyGUIstyle);
-            //	GUI.Label(new Rect (Screen.width - (Screen.width * 0.3f) - 50.0f, Screen.height - Screen.height, 100.0f, 30.0f), "Player 1 Score: " + Player2LifePoints, MyGUIstyle);
-
-            if (mShowGUIButton)
-            {
-                // draw the GUI button
-                if (GUI.Button(attackButton, "ATK/3000"))
-                {
-                    Debug.Log("Attack!");
-                    Cyclone.SetActive(false);
-                    Spark.SetActive(true);
-                    //StartCoroutine(StartWait());
-                    // do something on button click 
-                }
-                if (GUI.Button(defenseButton, "DEF/2500"))
-                {
-                    Debug.Log("Defense!");
-                    Cyclone.SetActive(true);
-                    //Spark.SetActive(false);
-                }
-            }
-        }
-
+        
 
         #endregion // PRIVATE_METHODS
     }

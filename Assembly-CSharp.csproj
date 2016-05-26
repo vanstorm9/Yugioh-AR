@@ -51,9 +51,6 @@
      <Compile Include="Assets\Models_Scripts\Models_Scripts\forTracker1.cs" />
      <Compile Include="Assets\Models_Scripts\Models_Scripts\forTracker2.cs" />
      <Compile Include="Assets\MyScripts\FieldTracker.cs" />
-     <Compile Include="Assets\MyScripts\Hit_detection.cs" />
-     <Compile Include="Assets\MyScripts\Hit_detection_BEWD.cs" />
-     <Compile Include="Assets\MyScripts\Hit_detection_Kuribo.cs" />
      <Compile Include="Assets\MyScripts\MasterControl.cs" />
      <Compile Include="Assets\MyScripts\MonsterTraits.cs" />
      <Compile Include="Assets\MyScripts\SpawnScript.cs" />
