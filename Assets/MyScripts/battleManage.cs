@@ -6,7 +6,7 @@ public class battleManage : MonoBehaviour {
     private GameObject attacker;
     private GameObject defender;
     private GameObject attacker_attack;
-
+    
 
     void Start()
     {
@@ -18,6 +18,9 @@ public class battleManage : MonoBehaviour {
     IEnumerator SuccessfulAttackIE(int delay_int)
     {
         attacker_attack = attacker.transform.FindChild("Attack").gameObject;
+
+        
+
         // Delay at n seconds
         yield return new WaitForSeconds(delay_int);
 
@@ -42,6 +45,11 @@ public class battleManage : MonoBehaviour {
         // Turning our input GameObjects into our global variables
         attacker = attacker_i;
         defender = defender_i;
+
+
+        //GameObject summon = attacker.transform.FindChild("Summon").gameObject;
+        //Debug.Log("Summoning animation: " + summon);
+        //summon.SetActive(true);
 
         //mShowGUIButton = true;
         // Entering battle phase (monster is preparing an attack)

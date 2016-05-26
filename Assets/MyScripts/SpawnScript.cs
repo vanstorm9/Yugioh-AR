@@ -10,14 +10,7 @@ public class SpawnScript : MonoBehaviour {
     private battleManage batManage;
 
 
-    //int counter = 0;
-    /*
-    void Start()
-    {
-        GameObject explosion = GameObject.Find("Explosion");
-        explosion.SetActive(false);
-    }
-    */
+
     // Update is called once per frame
     public void summonToField(GameObject ObjectToCopy) {
         // if (counter == 0)
@@ -62,31 +55,20 @@ public class SpawnScript : MonoBehaviour {
         tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
 
         GameObject Kuribo_temp = GameObject.Find("DE_temp");  // Uses temp Kuribo as GameObject, must remove as soon as possible
-
-        //Debug.Log("KU_temp: ", Kuribo_temp);
-        //Debug.Log("BWED_temp: ", tempGameObject);
-        //Debug.Log("BWED_real: ", ObjectToCopy);
-
-        batManage = GetComponent("battleManage") as battleManage;
+        //batManage = GetComponent("battleManage") as battleManage;
 
         MonsterTraits spawn_trait = tempGameObject.GetComponent("MonsterTraits") as MonsterTraits;
         spawn_trait.cslot = spawn_state;
 
-        batManage.battlePhase(tempGameObject, Kuribo_temp);
+        //GameObject master_ob = GameObject.Find("MasterObject");
+        MasterControl master_ctrl = GameObject.Find("MasterObject").GetComponent("MasterControl") as MasterControl;
+
+        Debug.Log("master_ctrl is: " + master_ctrl);
+        master_ctrl.engageBattlePhase(tempGameObject, Kuribo_temp);
+
+        //batManage.battlePhase(tempGameObject, Kuribo_temp);
         // ----------------------------------------------------------------------------------------------
 
-        
 
-        //counter++;
-        //}
-
-        /*
-        MonsterTraits monTraits = tempGameObject.GetComponent("MonsterTraits") as MonsterTraits;
-        Debug.Log("ATK: " + monTraits.atk);
-
-        Debug.Log("GO: " + tempGameObject);
-        Debug.Log("GO Parent: " + tempGameObject.transform.parent.name);
-        */
-        //Debug.Log("Ref_pos:" + RefObject.transform.position);
     }
 }
