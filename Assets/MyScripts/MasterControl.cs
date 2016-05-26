@@ -17,13 +17,15 @@ public class MasterControl : MonoBehaviour {
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(10, 25, 100, 30), "Mode 0"))
+        /*
+        if (GUI.Button(new Rect(10, Screen.height - 60, 100, 30), "Normal Mode"))
         {
             mode = 0;
         }
-        else if (GUI.Button(new Rect(10, 60, 100, 30), "Mode 1")) {
+        else if (GUI.Button(new Rect(10, Screen.height - 25, 100, 30), "Card Mode")) {
             mode = 1;
         }
+        */
 
         if (battlePhase)
         {

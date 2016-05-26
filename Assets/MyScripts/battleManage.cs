@@ -6,20 +6,25 @@ public class battleManage : MonoBehaviour {
     private GameObject attacker;
     private GameObject defender;
     private GameObject attacker_attack;
-    
+
+    private GameObject attack;
 
     void Start()
     {
         Explosion = GameObject.Find("Explosion");
         Explosion.SetActive(false);
+
+        attack = GameObject.Find("Attack");
+        attack.SetActive(false);
+
     }
 
     // Allows us to time our explosion
     IEnumerator SuccessfulAttackIE(int delay_int)
     {
         attacker_attack = attacker.transform.FindChild("Attack").gameObject;
+        attacker_attack.SetActive(true);
 
-        
 
         // Delay at n seconds
         yield return new WaitForSeconds(delay_int);
