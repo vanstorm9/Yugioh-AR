@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Blackstone" size="3.750000 5.000000" />
+    <ImageTarget name="Join-as-se" size="5.600000 7.466667" />
+    <ImageTarget name="Dark-Magician" size="1.000000 1.456311" />
+    <ImageTarget name="kuribo" size="1.000000 1.457143" />
+    <ImageTarget name="Blues-Eyes-White-Dragon" size="1.000000 1.448498" />
+  </Tracking>
+</QCARConfig>
