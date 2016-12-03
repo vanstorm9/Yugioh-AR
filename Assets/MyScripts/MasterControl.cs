@@ -5,6 +5,7 @@ public class MasterControl : MonoBehaviour {
 
     public GameObject field;
     public int mode = 0;
+    public int turn = 1;
     public bool battlePhase = false;
 
     private battleManage batManage;

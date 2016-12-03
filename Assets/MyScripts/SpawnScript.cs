@@ -8,7 +8,7 @@ public class SpawnScript : MonoBehaviour {
     private GameObject SpawnPoint;
     private MonsterTraits monTraits;
     private battleManage batManage;
-
+    public int numOfMonst = 0;
 
 
     // Update is called once per frame
@@ -38,9 +38,22 @@ public class SpawnScript : MonoBehaviour {
             {
                 component.enabled = true;
             }
-        
+
+        Debug.Log(ObjectToCopy);
+
         this.SpawnObject = ObjectToCopy;
-        SpawnPoint = GameObject.Find("Spawn");   // add a function that allocates spawn location
+
+        
+
+        if (numOfMonst > 0) {
+            SpawnPoint = GameObject.Find("Spawn_2");   // add a function that allocates spawn location
+        }
+        else{
+            SpawnPoint = GameObject.Find("Spawn");   // add a function that allocates spawn location
+        }
+        numOfMonst++;
+
+
         int spawn_state = 1;
         GameObject tempGameObject;
 
@@ -54,7 +67,7 @@ public class SpawnScript : MonoBehaviour {
         // Only for Blue Eyes (future work is to have an external script to call from that will store values)
         tempGameObject.transform.localScale = new Vector3(0.01F, 0.01F, 0.01F);
 
-        GameObject Kuribo_temp = GameObject.Find("DE_temp");  // Uses temp Kuribo as GameObject, must remove as soon as possible
+        GameObject Kuribo_temp = GameObject.Find("DE(Clone)");  // Uses temp Kuribo as GameObject, must remove as soon as possible
         //batManage = GetComponent("battleManage") as battleManage;
 
         MonsterTraits spawn_trait = tempGameObject.GetComponent("MonsterTraits") as MonsterTraits;

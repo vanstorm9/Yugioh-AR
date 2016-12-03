@@ -73,13 +73,16 @@ public class battleManage : MonoBehaviour {
 
             // If attacker is stronger than defender
             Debug.Log(attacker_traits.real_name + " destroyed " + defender_traits.real_name + "!");
+
+        
+
             Debug.Log("Opponent lost " + (attacker_traits.atk - defender_traits.atk) + "LP!");
 
             // Explosions
             int explosion_slot = defender_traits.cslot;
 
             
-            
+
 
 
 
@@ -94,6 +97,8 @@ public class battleManage : MonoBehaviour {
             // If attacker is weaker than defender
             Debug.Log(attacker_traits.real_name + " was destroyed by " + defender_traits.real_name + "!");
             Debug.Log("You lost " + (defender_traits.atk - attacker_traits.atk) + "LP!");
+
+       
 
             int explosion_slot = attacker_traits.cslot;
         }
